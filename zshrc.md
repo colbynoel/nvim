@@ -148,7 +148,7 @@ edir() {
                 fi
                 ;;
             -o) cd "$selected_dir" ;;  # Only change to the selected directory
-            *) code "$selected_dir" ;;  # Default to code if no option or unrecognized option is given
+            *) nvim "$selected_dir" ;;  # Default to code if no option or unrecognized option is given
         esac
     else
         echo "🚫 No directory selected."
