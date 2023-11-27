@@ -3,6 +3,8 @@ require("mason-lspconfig").setup({
   ensure_installed = { "lua_ls", "gopls", "terraformls", "pyright", "dockerls", "cssls", "html", "jsonls", "eslint" }
 })
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 local on_attach = function(_, _)
   capabilities = capabilities
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
@@ -14,7 +16,6 @@ local on_attach = function(_, _)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("lspconfig").lua_ls.setup {
   on_attach = on_attach,
