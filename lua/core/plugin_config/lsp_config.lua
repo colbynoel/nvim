@@ -4,6 +4,7 @@ require("mason-lspconfig").setup({
 })
 
 local on_attach = function(_, _)
+  capabilities = capabilities
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
 
@@ -13,39 +14,50 @@ local on_attach = function(_, _)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 require("lspconfig").lua_ls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 require("lspconfig").gopls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 require("lspconfig").terraformls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 require("lspconfig").pyright.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 require("lspconfig").dockerls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 require("lspconfig").cssls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 require("lspconfig").html.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 require("lspconfig").jsonls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 require("lspconfig").eslint.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
