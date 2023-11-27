@@ -1,6 +1,7 @@
 local cmp = require("cmp")
 
 require("luasnip.loaders.from_vscode").lazy_load()
+require('nvim-autopairs').setup{}
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
@@ -20,10 +21,9 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  }, {
-    { name = 'buffer' },
+    { name = "nvim_lsp" }, -- LSP
+    { name = "luasnip" }, -- snippets
+    { name = "buffer" }, -- text within the current buffer
+    { name = "path" }, -- file system paths
   }),
 })
-
