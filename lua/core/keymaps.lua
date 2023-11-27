@@ -23,3 +23,16 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', {noremap = true})
 
+vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+        ['+'] = 'clip.exe',
+        ['*'] = 'clip.exe',
+    },
+    paste = {
+        ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+}
+
