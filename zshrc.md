@@ -87,11 +87,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -101,8 +101,11 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
+
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
+alias nvconfig="nvim ~/.config/nvim"
 alias oldvim="vim"
 alias vim="nvim"
 alias vi="nvim"
@@ -160,6 +163,7 @@ personal() {
     ssh-add -D
     ssh-add ~/.ssh/id_ed25519_personal
     git config --global user.email "colbynoel02@gmail.com"
+    cd ~/personal
     echo "Switched to Personal SSH and Git Config."
 }
 
@@ -168,6 +172,7 @@ work() {
     ssh-add -D
     ssh-add ~/.ssh/id_ed25519_work
     git config --global user.email "colby.noel@gainwelltechnologies.com"
+    cd ~/work
     echo "Switched to Work SSH and Git Config."
 }
 
@@ -175,6 +180,23 @@ mkcd(){
 	mkdir "$1"
 	cd "$1"
 }
+
+
+python_venv() {
+  MYVENV=./env  
+  # when you cd into a folder that contains $MYVENV
+  [[ -d $MYVENV ]] && source $MYVENV/bin/activate > /dev/null 2>&1
+  # when you cd into a folder that doesn't
+  [[ ! -d $MYVENV ]] && deactivate > /dev/null 2>&1
+}
+autoload -U add-zsh-hook
+add-zsh-hook chpwd python_venv
+python_venv
+
+
+
+
+
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
