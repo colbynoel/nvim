@@ -12,13 +12,13 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'Mofiqul/dracula.nvim'
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-lualine/lualine.nvim'
-  use 'nvim-tree/nvim-web-devicons'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'hrsh7th/nvim-cmp'
+  use 'wbthomason/packer.nvim' -- Plugin manager
+  use 'Mofiqul/dracula.nvim' -- NVIM Theme
+  use 'nvim-tree/nvim-tree.lua' -- File explorer
+  use 'nvim-lualine/lualine.nvim' -- Status bar at the bottom
+  use 'nvim-tree/nvim-web-devicons' -- Icons integrated in nvim-tree
+  use 'nvim-treesitter/nvim-treesitter' -- Parser generator tool
+  use 'hrsh7th/nvim-cmp' -- This plugin to "Auto pairs" is for code completition
   use 'hrsh7th/cmp-nvim-lsp'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
@@ -27,12 +27,13 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/cmp-path'
   use 'windwp/nvim-autopairs'  -- Auto pairs, integrates with both cmp and LuaSnip
-  use {
+  use 'numToStr/Comment.nvim'
+  use { -- LSP plugins
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
   }
-  use {
+  use { -- Live grep, file search, etc
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4',
     requires = { {'nvim-lua/plenary.nvim'} }
