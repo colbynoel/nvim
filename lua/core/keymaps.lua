@@ -20,6 +20,8 @@ vim.opt.shiftround = true
 vim.opt.expandtab = true
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+vim.keymap.set('n', '<leader>o', 'o<Esc>')
+vim.keymap.set('n', '<leader>O', 'O<Esc>')
 
 vim.api.nvim_set_keymap('i', '<C-H>', '<C-W>', {noremap = true})
 
